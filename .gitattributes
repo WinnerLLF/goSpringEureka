@@ -1,0 +1,5 @@
+*.yml linguist-language=Go
+*.md linguist-language=Go
+*.xml linguist-language=Go
+*.bat linguist-language=Go
+*.cmd linguist-language=Go
