@@ -12,7 +12,7 @@ This is an instance of registering GoService into spring-eureka using the sideca
    1> visit: http://localhost:1026/  
    2> visit: http://localhost:1027/
 
-二, register GoService in spring-eureka
+二、 register GoService in spring-eureka
 1. Prepare a GoService data service
    1> provides the heartbeat routing /health and/required for registration, which is used to provide Web administration interface queries
    2>/health returns {"status":"UP"}
