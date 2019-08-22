@@ -1,0 +1,57 @@
+#基本信息
+info:
+  businessSide: 服务开发部
+  serviceName: XXXXXX数据服务
+  version: v1.0
+  jdk-version: v1.8
+  spring-boot.version: v2.1.5
+  author: XXXXXX有限公司
+#注册服务端口配置
+server:
+  port: 2019
+#Feign和Ribbon作为底层,负责服务间通信;Ribbon的许多参数是公用的,为了支持平滑上下线功能,数据服务的负载均衡,合理的超时配置;
+feign:
+  hystrix:
+    enabled: true
+ribbon:
+  NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+#spring配置
+spring:
+  application:
+    name: winfo-data-SeaAreaService
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+  aop:
+    proxyTargetClass: true
+    auto: true
+  jmx:
+    enabled: true
+#Eureka配置
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+    serviceUrl: #单机配置  http://scf:scf@localhost:1025/eureka/
+      defaultZone: http://scf:scf@localhost:1025/eureka/,http://scf:scf@localhost1:1025/eureka/,http://scf:scf@localhost2:1025/eureka/ #集群配置方式
+    registry-fetch-interval-seconds: 5
+    register-with-eureka: true
+    fetch-registry: false
+    instance:
+      prefer-ip-address: true
+      instance-id: localhost #服务中心的信息显示（如果IP地址不显示的话,进行配置）
+#sidecar配置
+sidecar:
+  port: 20190
+  health-uri: http://localhost:${sidecar.port}/health  #需要注册的GoService数据服务
+#web可视化页面管理配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
