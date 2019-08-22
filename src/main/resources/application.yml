@@ -34,8 +34,8 @@ eureka:
   client:
     healthcheck:
       enabled: true
-    serviceUrl: #单机配置  http://scf:scf@localhost:1025/eureka/
-      defaultZone: http://scf:scf@localhost:1025/eureka/,http://scf:scf@localhost1:1025/eureka/,http://scf:scf@localhost2:1025/eureka/ #集群配置方式
+    serviceUrl:
+      defaultZone: http://winfo:winfo@localhost:1026/eureka/ #集群配置方式 http://scf:scf@localhost:1025/eureka/,http://scf:scf@localhost1:1025/eureka/,http://scf:scf@localhost2:1025/eureka/
     registry-fetch-interval-seconds: 5
     register-with-eureka: true
     fetch-registry: false
